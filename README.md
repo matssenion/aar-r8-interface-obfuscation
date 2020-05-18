@@ -33,11 +33,22 @@ and using rule:
 
 only the interface name and method, which is not identically named as the one in the public interface, are obfuscated.
 
-If however setting in gradle.properties the flag
+The resulting mapping.txt file shows this as myFunction1() is missing:
+
+```
+compiler: R8
+compiler_version: 1.6.67
+pg_map_id: d2553df
+common_typos_disable
+com.example.obfuscationexample.internal.MyInterfaceInternal -> a.a.a.a.a:
+    void myObfuscatedFunction() -> a
+```
+
+If however, setting in gradle.properties the flag:
 ```
 android.enableR8=false
 ```
 
-making the build using Proguard instead of R8, both of the indented private methods are indeed obfuscated.
+making the build use Proguard instead of R8, both of the intended private methods are indeed obfuscated.
 
 Is there another set of rules for R8 to behave similar to Proguard in this case?
