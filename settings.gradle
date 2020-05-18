@@ -1,0 +1,3 @@
+rootProject.name='AarR8Example'
+include ':app'
+
